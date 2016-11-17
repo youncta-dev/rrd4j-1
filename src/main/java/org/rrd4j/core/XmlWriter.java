@@ -1,6 +1,5 @@
 package org.rrd4j.core;
 
-import java.awt.*;
 import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -123,42 +122,8 @@ public class XmlWriter {
         writeTag(tag, Boolean.toString(value));
     }
 
-    /**
-     * Writes &lt;tag&gt;value&lt;/tag&gt; to output stream
-     *
-     * @param tag   XML tag name
-     * @param value value to be placed between <code>&lt;tag&gt;</code> and <code>&lt;/tag&gt;</code>
-     */
-    public void writeTag(String tag, Color value) {
-        int rgb = value.getRGB() & 0xFFFFFF;
-        writeTag(tag, "#" + Integer.toHexString(rgb).toUpperCase());
-    }
 
-    /**
-     * Writes &lt;tag&gt;value&lt;/tag&gt; to output stream
-     *
-     * @param tag   XML tag name
-     * @param value value to be placed between <code>&lt;tag&gt;</code> and <code>&lt;/tag&gt;</code>
-     */
-    public void writeTag(String tag, Font value) {
-        startTag(tag);
-        writeTag("name", value.getName());
-        int style = value.getStyle();
-        if ((style & Font.BOLD) != 0 && (style & Font.ITALIC) != 0) {
-            writeTag(STYLE, "BOLDITALIC");
-        }
-        else if ((style & Font.BOLD) != 0) {
-            writeTag(STYLE, "BOLD");
-        }
-        else if ((style & Font.ITALIC) != 0) {
-            writeTag(STYLE, "ITALIC");
-        }
-        else {
-            writeTag(STYLE, "PLAIN");
-        }
-        writeTag("size", value.getSize());
-        closeTag();
-    }
+
 
     /**
      * Writes &lt;tag&gt;value&lt;/tag&gt; to output stream

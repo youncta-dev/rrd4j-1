@@ -1,6 +1,7 @@
 rrd4j <a href='http://jrds.fr/jenkins/job/rrd4j/'><img src='http://jrds.fr/jenkins/job/rrd4j/badge/icon?file=.png' /></a>
 =====
 
+This is a reduced version of RRD4J that doesn't include the graph system and makes it suitable for compact2 version of the JVM.
 RRD4J is a high performance data logging and graphing system for time series data, implementing [RRDTool's](http://oss.oetiker.ch/rrdtool/)
 functionality in Java. It follows much of the same logic and uses the same data sources, archive types and definitions as RRDTool does.
 

@@ -4,7 +4,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -112,21 +111,6 @@ public abstract class XmlTemplate {
         valueMap.put(name, new Double(value));
     }
 
-    /**
-     * Sets value for a single XML template variable. Variable name should be specified
-     * without leading '${' and ending '}' placeholder markers. For example, for a placeholder
-     * <code>${start}</code>, specify <code>start</code> for the <code>name</code> parameter.
-     *
-     * @param name  variable name
-     * @param value value to be set in the XML template
-     */
-    public void setVariable(String name, Color value) {
-        String r = byteToHex(value.getRed());
-        String g = byteToHex(value.getGreen());
-        String b = byteToHex(value.getBlue());
-        String a = byteToHex(value.getAlpha());
-        valueMap.put(name, "#" + r + g + b + a);
-    }
 
     private String byteToHex(int i) {
         String s = Integer.toHexString(i);
@@ -405,17 +389,6 @@ public abstract class XmlTemplate {
     protected boolean getValueAsBoolean(Node parentNode) {
         String valueStr = getValue(parentNode);
         return Util.parseBoolean(valueStr);
-    }
-
-    /**
-     * getValueAsColor.
-     *
-     * @param parentNode a {@link org.w3c.dom.Node} object.
-     * @return a {@link java.awt.Paint} object.
-     */
-    protected Paint getValueAsColor(Node parentNode) {
-        String rgbStr = getValue(parentNode);
-        return Util.parseColor(rgbStr);
     }
 
     /**

@@ -15,7 +15,6 @@ import org.xml.sax.SAXParseException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.awt.*;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -333,30 +332,6 @@ public class Util {
                 valueStr.equalsIgnoreCase("1");
     }
 
-    /**
-     * Parses input string as color. The color string should be of the form #RRGGBB (no alpha specified,
-     * opaque color) or #RRGGBBAA (alpa specified, transparent colors). Leading character '#' is
-     * optional.
-     *
-     * @param valueStr Input string, for example #FFAA24, #AABBCC33, 010203 or ABC13E4F
-     * @return Paint object
-     * @throws java.lang.IllegalArgumentException If the input string is not 6 or 8 characters long (without optional '#')
-     */
-    public static Paint parseColor(String valueStr) {
-        String c = valueStr.startsWith("#") ? valueStr.substring(1) : valueStr;
-        if (c.length() != 6 && c.length() != 8) {
-            throw new IllegalArgumentException("Invalid color specification: " + valueStr);
-        }
-        String r = c.substring(0, 2), g = c.substring(2, 4), b = c.substring(4, 6);
-        if (c.length() == 6) {
-            return new Color(Integer.parseInt(r, 16), Integer.parseInt(g, 16), Integer.parseInt(b, 16));
-        }
-        else {
-            String a = c.substring(6);
-            return new Color(Integer.parseInt(r, 16), Integer.parseInt(g, 16),
-                    Integer.parseInt(b, 16), Integer.parseInt(a, 16));
-        }
-    }
 
     /**
      * Returns file system separator string.
